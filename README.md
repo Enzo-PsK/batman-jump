@@ -1,11 +1,11 @@
 ## Batman Jump
 
-Have you ever wondered what it would be like to see Batman walking peacefully through the Mario World? In this game you can see it happening :)
+Have you ever wondered what it would be like to see Batman walking peacefully through the Mario World? In this game you can see it happening :) \
 You can play online on [https://batman-jump.vercel.app/](https://batman-jump.vercel.app/)
 
 ## About
 
-Hello there! This project was done by me on a beautiful Sunday afternoon, it's not a copy or clone from anywhere. I hope everyone enjoys the game and also retrieve some knowledge from this code.
+Hello there! This project was done by me on a beautiful Sunday afternoon, it's not a copy or clone from anywhere. I hope everyone enjoys the game and also retrieve some knowledge from this code.\
 Project Stack: NextJS + Typescript + SCSS
 
 ## Roadmap
