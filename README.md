@@ -5,7 +5,7 @@ Have you ever wondered what it would be like to see Batman walking peacefully th
 ## About
 
 Hello there! This project was done by me on a beautiful Sunday afternoon, it's not a copy or clone from anywhere. I hope everyone enjoys the game and also retrieve some knowledge from this code.
-Project Stack: NextJS + Typescript
+Project Stack: NextJS + Typescript + SCSS
 
 ## Roadmap
 - Fix hitbox collision on mobile
