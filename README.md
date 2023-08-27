@@ -8,6 +8,7 @@ Hello there! This project was done by me on a beautiful Sunday afternoon, it's n
 Project Stack: NextJS + Typescript
 
 ## Roadmap
+- Fix hitbox collision on mobile
 - Local leaderboard
 - Online leaderboard
 - Create a secure way to set the score for anti-cheat purposes
