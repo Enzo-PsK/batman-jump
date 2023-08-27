@@ -1,0 +1,25 @@
+.menu {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.menuHide{
+    display: none;
+}
+
+.menuTitle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.menuItem {
+    &:hover{
+        cursor: pointer;
+        color: red;
+    }
+}
