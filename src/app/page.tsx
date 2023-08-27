@@ -51,8 +51,8 @@ export default function Home() {
         let heroRectRight = heroRect.right - 40;
 
         if (windowSizeRef.current[0] < 768) {
-            heroRectRight = heroRect.right + 17;
-            heroRectRight = heroRect.right - 12;
+            heroRectRight = heroRect.right + 15;
+            heroRectRight = heroRect.right - 10;
         }
 
         return !(
