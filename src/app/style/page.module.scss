@@ -17,6 +17,9 @@ $heroBottomMb: -7px;
     position: absolute;
     top: 10px;
     right: 10px;
+    @media (max-width: 768px) {
+        font-size: 10px;
+    }
 }
 
 .gameBoard {
@@ -80,6 +83,11 @@ $heroBottomMb: -7px;
     transform: translate(-50%, -50%);
     font-size: 50px;
     color: red;
+    @media (max-width: 768px) {
+        text-align: center;
+        font-size: 30px;
+        width: 90%;
+    }
 }
 
 .gameOverRetry {
@@ -87,6 +95,11 @@ $heroBottomMb: -7px;
     margin-top: 20px;
     font-size: 30px;
     color: black;
+
+    @media (max-width: 768px) {
+        margin-top: 10px;
+        font-size: 20px;
+    }
 
     &:hover {
         cursor: pointer;
@@ -112,6 +125,7 @@ $heroBottomMb: -7px;
     animation: cloud-animation 20s infinite linear;
 
     @media (max-width: 768px) {
+        top: 40px;
         height: 200px;
     }
 }

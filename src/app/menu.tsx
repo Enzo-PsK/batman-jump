@@ -19,7 +19,7 @@ export default function Menu({ handlePlayButton }: { handlePlayButton: () => voi
         <div className={`${userClick ? style.menuHide : ""} ${style.menu}`}>
             <div className={style.menuTitle}>Batman Jump</div>
             <div onClick={handleClick} className={style.menuItem}>
-                Play Game
+             <span>&#8680;</span>Play Game
             </div>
         </div>
     );

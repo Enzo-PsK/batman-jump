@@ -14,6 +14,7 @@ export default function Home() {
     const heroRef = useRef(null);
     const obstacleRef = useRef(null);
     const cloudsRef = useRef(null);
+    const windowSizeRef = useRef([0, 0]);
     const scoreRef: { current: NodeJS.Timeout | null } = useRef(null);
     const checkCollisionRef: { current: NodeJS.Timeout | null } = useRef(null);
 
@@ -23,7 +24,11 @@ export default function Home() {
             resetGame();
             return;
         }
-        if (isJumping || !isPlaying) return;
+        if (!isPlaying) {
+            handlePlayButton();
+            return;
+        }
+        if (isJumping) return;
         setIsJumping(true);
         setTimeout(() => setIsJumping(false), 1000);
     };
@@ -42,12 +47,13 @@ export default function Home() {
         const obstacleRect = obstacle.getBoundingClientRect();
 
         //Manually adjust the hitbox to make it more accurate
-        const heroRectLeft = heroRect.left + 45;
-        const heroRectRight = heroRect.right - 40;
+        let heroRectLeft = heroRect.left + 45;
+        let heroRectRight = heroRect.right - 40;
 
-        console.log(heroRect, obstacleRect);
-        console.log(heroRectRight < obstacleRect.left);
-        console.log(heroRectLeft > obstacleRect.right);
+        if (windowSizeRef.current[0] < 768) {
+            heroRectRight = heroRect.right + 17;
+            heroRectRight = heroRect.right - 12;
+        }
 
         return !(
             heroRect.top > obstacleRect.bottom ||
@@ -78,6 +84,7 @@ export default function Home() {
     useEffect(() => {
         window.addEventListener("keydown", inputHandler);
         window.addEventListener("click", inputHandler);
+        windowSizeRef.current = [window.innerWidth, window.innerHeight];
     }, []);
     useEffect(() => {
         if (!userInput) return;
@@ -88,12 +95,11 @@ export default function Home() {
         checkCollisionRef.current = setInterval(() => {
             console.log("checkCollision");
             if (!isPlaying) {
-                console.log("Entrou no return");
                 clearInterval(checkCollisionRef.current as NodeJS.Timeout);
                 return;
             }
             if (checkCollision()) {
-                // Code for hitbox debug
+                //Code for hitbox debug
                 // const hero = heroRef.current as HTMLElement;
                 // const obstacle = obstacleRef.current as HTMLElement;
                 // if (!hero || !obstacle) return false;
@@ -101,19 +107,17 @@ export default function Home() {
                 // obstacle.style.border = "2px solid red";
                 handleGameOver();
                 clearInterval(checkCollisionRef.current as NodeJS.Timeout);
-                console.log("Game Over!");
             }
         }, 10);
         //Core score function
         scoreRef.current = setInterval(() => {
             if (!isPlaying) {
-                console.log("Score FInal: ", score);
-                console.log("FIM DO SCORE");
+                console.log("Score Final: ", score);
                 clearInterval(scoreRef.current as NodeJS.Timeout);
                 return;
             }
             setScore((score) => score + 13);
-            console.log("Score: ", score);
+            console.log("Score Atual: ", score);
         }, 700);
         return () => {
             clearInterval(checkCollisionRef.current as NodeJS.Timeout);
@@ -125,7 +129,7 @@ export default function Home() {
         <main className={style.main}>
             {/* <div className={style.title}>Batman Jump</div> */}
             <div className={style.gameBoard}>
-                <Menu handlePlayButton={handlePlayButton} />
+                {!isPlaying && !gameOver && <Menu handlePlayButton={handlePlayButton} />}
                 <div className={`${style.gameOver} ${gameOver ? style.gameOverShow : ""}`}>
                     Game Over
                     <div onClick={resetGame} className={`${style.gameOverRetry}`}>
