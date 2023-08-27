@@ -19,7 +19,11 @@ export default function Home() {
 
     //All auxiliary functions
     const jumpHandler = () => {
-        if (isJumping || gameOver || !isPlaying) return;
+        if (gameOver) {
+            resetGame();
+            return;
+        }
+        if (isJumping || !isPlaying) return;
         setIsJumping(true);
         setTimeout(() => setIsJumping(false), 1000);
     };
@@ -59,8 +63,7 @@ export default function Home() {
         }, 3000);
         console.log("Game Started!");
     };
-    const resetGame = (e: any) => {
-        e.stopPropagation();
+    const resetGame = () => {
         setObstacleRun(false);
         setGameOver(false);
         setScore(0);
