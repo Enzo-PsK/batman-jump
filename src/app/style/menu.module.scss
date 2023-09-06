@@ -1,4 +1,5 @@
 .menu {
+    min-width: 360px;
     position: absolute;
     top: 20%;
     left: 50%;
@@ -8,6 +9,7 @@
     padding: 20px;
 
     @media (max-width: 768px) {
+        min-width: 0;
         width: 60%;
     }
 }
@@ -17,7 +19,9 @@
 }
 
 .menuTitle {
+    max-width: 180px;
     text-align: center;
+    margin: 0 auto;
     margin-bottom: 30px;
     line-height: 1.3;
 }
@@ -31,4 +35,14 @@
         cursor: pointer;
         color: red;
     }
+}
+
+.menuItems {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.return {
+    margin-top: 20px;
 }

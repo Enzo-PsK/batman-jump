@@ -6,11 +6,13 @@ import Menu from "./menu";
 
 export default function Home() {
     const [score, setScore] = useState(0);
+    const [bestScore, setBestScore] = useState(0);
     const [userInput, setUserInput] = useState(false);
     const [isJumping, setIsJumping] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [obstacleRun, setObstacleRun] = useState(false);
     const [gameOver, setGameOver] = useState(false);
+    const [scoreMessage, setScoreMessage] = useState("");
     const heroRef = useRef(null);
     const obstacleRef = useRef(null);
     const cloudsRef = useRef(null);
@@ -85,6 +87,11 @@ export default function Home() {
         window.addEventListener("keydown", inputHandler);
         window.addEventListener("click", inputHandler);
         windowSizeRef.current = [window.innerWidth, window.innerHeight];
+        setBestScore(() => {
+            const bestScore = Number(localStorage.getItem("bestScore"));
+            if (!bestScore) localStorage.setItem("bestScore", "0");
+            return bestScore || 0;
+        });
     }, []);
     useEffect(() => {
         if (!userInput) return;
@@ -112,7 +119,10 @@ export default function Home() {
         //Core score function
         scoreRef.current = setInterval(() => {
             if (!isPlaying) {
-                console.log("Score Final: ", score);
+                if (score > bestScore) {
+                    setBestScore(score);
+                    localStorage.setItem("bestScore", score.toString());
+                }
                 clearInterval(scoreRef.current as NodeJS.Timeout);
                 return;
             }
@@ -124,6 +134,14 @@ export default function Home() {
             clearInterval(scoreRef.current as NodeJS.Timeout);
         };
     }, [isPlaying]);
+    useEffect(() => {
+      if(score < 500) setScoreMessage("(You can do better!)")
+      if(score >= 500) setScoreMessage("(Keep going!)")
+      if(score >= 1000) setScoreMessage("(Nice job!)")
+      if(score >= 10000) setScoreMessage("(Amazing!)")
+      if(score >= 100000) setScoreMessage("(Unbelievable!)")
+      if(score >= 9999999) setScoreMessage("(Are you a cheater??? Wow!)")
+    }, [bestScore]);
 
     return (
         <main className={style.main}>
@@ -132,6 +150,8 @@ export default function Home() {
                 {!isPlaying && !gameOver && <Menu handlePlayButton={handlePlayButton} />}
                 <div className={`${style.gameOver} ${gameOver ? style.gameOverShow : ""}`}>
                     Game Over
+                    <div className={`${style.personalBest}`}>Your best score is: {bestScore}</div>
+                    <div className={`${style.scoreMessage}`}>{scoreMessage}</div>
                     <div onClick={resetGame} className={`${style.gameOverRetry}`}>
                         Retry?
                     </div>
