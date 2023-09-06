@@ -9,13 +9,12 @@ Hello there! This project was done by me on a beautiful Sunday afternoon, it's n
 Project Stack: NextJS + Typescript + SCSS
 
 ## Roadmap
-- Fix hitbox collision on mobile
-- Local leaderboard
-- Online leaderboard
-- Create a secure way to set the score for anti-cheat purposes
+- ~~Local leaderboard (best score)~~
 - Dynamic obstacles (more difficult over the game)
+- Create a secure way to set the score for anti-cheat purposes
+- Online leaderboard
+- Improve hitbox collision math and size on mobile
 - Improve animation flow
-- Improve hitbox collision math
 
 
 ## Running locally
