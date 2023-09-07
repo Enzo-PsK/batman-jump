@@ -56,12 +56,12 @@ export default function Menu({ handlePlayButton }: { handlePlayButton: () => voi
             <div className={style.menuItems}>
                 <div onClick={handleLinkedInClick} className={style.menuItem}>
                     <span>&#8680;</span>
-                    <Image src="/linkedin.png" alt="LinkedIn Logo" width="30" height="30" />
+                    <Image loading="eager" src="/linkedin.png" alt="LinkedIn Logo" width="30" height="30" />
                     LinkedIn
                 </div>
                 <div onClick={handleGitHubClick} className={style.menuItem}>
                     <span>&#8680;</span>
-                    <Image src="/github-dark.png" alt="GitHub Logo" width="30" height="30" />
+                    <Image loading="eager" src="/github-dark.png" alt="GitHub Logo" width="30" height="30" />
                     GitHub
                 </div>
                 <div onClick={handleBackClick} className={`${style.menuItem} ${style.return}`}>

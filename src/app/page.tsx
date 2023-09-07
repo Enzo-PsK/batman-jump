@@ -135,12 +135,12 @@ export default function Home() {
         };
     }, [isPlaying]);
     useEffect(() => {
-      if(score < 500) setScoreMessage("(You can do better!)")
-      if(score >= 500) setScoreMessage("(Keep going!)")
-      if(score >= 1000) setScoreMessage("(Nice job!)")
-      if(score >= 10000) setScoreMessage("(Amazing!)")
-      if(score >= 100000) setScoreMessage("(Unbelievable!)")
-      if(score >= 9999999) setScoreMessage("(Are you a cheater??? Wow!)")
+        if (score < 500) setScoreMessage("(You can do better!)");
+        if (score >= 500) setScoreMessage("(Keep going!)");
+        if (score >= 1000) setScoreMessage("(Nice job!)");
+        if (score >= 10000) setScoreMessage("(Amazing!)");
+        if (score >= 100000) setScoreMessage("(Unbelievable!)");
+        if (score >= 9999999) setScoreMessage("(Are you a cheater??? Wow!)");
     }, [bestScore]);
 
     return (
@@ -159,6 +159,7 @@ export default function Home() {
                 <div className={style.score}>Score: {score}</div>
                 <Image
                     ref={cloudsRef}
+                    loading="eager"
                     width={550}
                     height={253}
                     className={`${!isPlaying || gameOver ? style.cloudsEnd : ""} ${style.clouds}`}
@@ -166,6 +167,7 @@ export default function Home() {
                     alt="Clouds"
                 />
                 <Image
+                    loading="eager"
                     ref={heroRef}
                     width={150}
                     height={150}
@@ -175,6 +177,7 @@ export default function Home() {
                 />
                 <Image
                     ref={obstacleRef}
+                    loading="eager"
                     width={80}
                     height={102}
                     className={`${obstacleRun ? style.obstacleAnimate : ""} ${
