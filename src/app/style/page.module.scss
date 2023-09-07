@@ -100,7 +100,7 @@ $heroBottomMb: -7px;
     color: black;
 
     @media (max-width: 768px) {
-        margin-top: 10px;
+        margin-top: 20px;
         font-size: 20px;
     }
 
@@ -114,12 +114,18 @@ $heroBottomMb: -7px;
     margin-top: 10px;
     font-size: 16px;
     color: black;
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
 }
 
 .scoreMessage{
     margin-top: 10px;
     font-size: 14px;
     color: black;
+    @media (max-width: 768px) {
+        font-size: 10px;
+    }
 }
 
 .gameOverShow {
